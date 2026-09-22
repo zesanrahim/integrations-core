@@ -520,3 +520,89 @@ tests:
      - "source:LOGS_SOURCE"
      - "db:pgllp_db"
     timestamp: 1786999534801
+ -
+  sample: " sql_error_code = 42601 time_ms = \"2026-08-17 20:47:13.749 UTC\" pid=\"108\" proc_start_time=\"2026-08-17 20:47:13 UTC\" session_id=\"6a837351.6c\" vtid=\"4/5\" tid=\"0\" log_line=\"10\" database=\"pgllp_db\" connection_source=\"172.17.0.1(42336)\" user=\"pgllp_user\" application_name=\"pgllp_app\" ERROR:  42601: syntax error at or near \"SELEC\""
+  result:
+    custom:
+      application_name: pgllp_app
+      db:
+        backend_start: 1786999633000
+        date: 1786999633749
+        instance: pgllp_db
+        severity: ERROR
+        user: pgllp_user
+      dbname: pgllp_db
+      error_severity: ERROR
+      line_num: 10
+      network:
+        client:
+          ip: 172.17.0.1
+          port: 42336
+      pid: 108
+      postgres:
+        appname: pgllp_app
+        proc_id: '108'
+        session_id: 6a837351.6c
+        severity_category: error
+        vxid: 4/5
+        xid: '0'
+      remote_host: 172.17.0.1
+      remote_port: 42336
+      session_id: 6a837351.6c
+      session_lineno: 10
+      session_start: 2026-08-17 20:47:13 UTC
+      timestamp: 2026-08-17 20:47:13.749 UTC
+      txid: 0
+      user: pgllp_user
+      vxid: 4/5
+      state_code: '42601'
+      sql_state: '42601'
+    message: syntax error at or near "SELEC"
+    status: error
+    tags:
+    - source:LOGS_SOURCE
+    - db:pgllp_db
+    timestamp: 1786999633749
+ -
+  sample: "2025-09-16 18:26:45.429 UTC:192.168.65.1(31674):postgres@postgres:[87]:34853:42601:2025-09-16 18:25:58 UTC:5/2050:2823:68c9abb6.57:pgbench:ERROR:  42601: syntax error at or near \"SELEC\""
+  result:
+    custom:
+      application_name: pgbench
+      db:
+        backend_start: 1758047158000
+        date: 1758047205429
+        instance: postgres
+        severity: ERROR
+        user: postgres
+      dbname: postgres
+      error_severity: ERROR
+      line_num: 34853
+      network:
+        client:
+          ip: 192.168.65.1
+          port: 31674
+      pid: 87
+      postgres:
+        appname: pgbench
+        proc_id: '87'
+        session_id: 68c9abb6.57
+        severity_category: error
+        vxid: 5/2050
+        xid: '2823'
+      remote_host: 192.168.65.1
+      remote_port: 31674
+      session_id: 68c9abb6.57
+      session_lineno: 34853
+      session_start: 2025-09-16 18:25:58 UTC
+      timestamp: 2025-09-16 18:26:45.429 UTC
+      txid: 2823
+      user: postgres
+      vxid: 5/2050
+      state_code: '42601'
+      sql_state: '42601'
+    message: syntax error at or near "SELEC"
+    status: error
+    tags:
+    - source:LOGS_SOURCE
+    - db:postgres
+    timestamp: 1758047205429
